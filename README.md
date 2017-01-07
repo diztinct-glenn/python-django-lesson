@@ -1,5 +1,6 @@
 # python-django-lesson
 A beginner's lesson on the Python language and Django framework.
+![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
 
 #Python#
 Python is space sensitive!
@@ -17,13 +18,11 @@ def functionName(arguments):
 ###Importing packages:###
 Example:
 ```python
-from django.http import HttpResponse
- #from package.subpackage import module 
+from django.http import HttpResponse #from package.subpackage import module 
 
 def hello_world(request):
   return HttpResponse('Hello World')
 ```
-
 
 #Django#
 Django is a MTV(Model-Template-View) framework. MTV is similar to what we've seen with MVC in Ruby on Rails except for some small differences. For instance, Views in Django are the bridge between Models(Database) and Templates(What You See), similar to what we called Controllers in Ruby on Rails.
