@@ -8,6 +8,8 @@ Python is space sensitive!
 
 Virtual Environment will isolate your Python/Django setup on a per-project basis. This means that any changes you make to one website won't affect any others you're also developing.
 
+Trailing commas in lists in Python are always a good habit. We know this goes against everything you learned in JavaScript, but we promise it's alright here in Python land!
+
 ###How to write a function:###
 ```python
 def functionName(arguments):
@@ -32,17 +34,9 @@ Routes in Django are written using regular expressions
 
 ###How to start a project in Django:###
 First you need Django installed. You can do that by running
-```
-pip install django
-```
+`pip install django`
 You can then enter
-```
-django-admin.py startproject project_name 
-```
-or 
-```
-django-admin startproject project_name
-```
+`django-admin.py startproject project_name ` or `django-admin startproject project_name`
 to create a project tree directory. This directory will have certain files/directories in it now, including the: <br>
 * project_name root directory - project's root folder<br>
 <br>
@@ -56,16 +50,13 @@ Inside of that is:<br>
 
 ###Running the Server:###
 From within the project_name directory, not the root directory, run: 
-```
-python manage.py migrate
-```
+`python manage.py migrate`
+
 This will apply all pending migrations from all apps. Migrations, as we know, are all about the database, which we haven't set up. That's because Django comes with one. Then, run:
-```
-python manage.py runserver 0.0.0.0:8000
-```
+`python manage.py runserver 0.0.0.0:8000`
 This will run the server.
 
-###How to write a URL:###
+###How to Write a URL:###
 URLs are all written in your urls.py file.
 
 In our urls.py we have to import from what view it is we're using for our route. For example, if we had a views.py file in the same directory as your urls.py we'd write this line:
@@ -78,3 +69,20 @@ urlpatterns = [
     url(r'^$', views.hello_world)
 ]
 ```
+
+###How to Create an App:###
+Django projects contain multiple Django apps. Each app generally encompasses a specific area of functionality.
+
+To create an app in Django run this command in your terminal:
+`python manage.py startapp app_name`
+
+After we run that command, go into your projects settings.py file and find the part that has the array `INSTALLED_APPS`. After all of the django apps already included in the array, make sure to add whatever you `app_name` was you used in the command `python manage.py startapp app_name`.
+
+
+
+
+
+
+
+
+
