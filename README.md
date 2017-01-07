@@ -1,7 +1,9 @@
+![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
+
 # python-django-lesson
 A beginner's lesson on the Python language and Django framework.
 
-<<<<<<< HEAD
+
 Python Docs: https://docs.python.org/3/tutorial/datastructures.html
 
 Python is space sensitive!
@@ -124,11 +126,8 @@ Foor loops:
 Range is a function that creates a list of numbers in order:
     ex: for i in range(1, 6):
         print(i) = 1, 2, 3, 4, 5
-=======
-![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
 
-#Python#
-Python is space sensitive!
+<hr/>
 
 Virtual Environment will isolate your Python/Django setup on a per-project basis. This means that any changes you make to one website won't affect any others you're also developing.
 
@@ -204,10 +203,5 @@ After we run that command, go into your projects settings.py file and find the p
 
 
 
-
-
-
-
->>>>>>> f95d1fbc179cb91eb4603b17aa8322a777f6ff9e
 
 
