@@ -1,5 +1,6 @@
 # python-django-lesson
 A beginner's lesson on the Python language and Django framework.
+
 ![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
 
 #Python#
@@ -48,13 +49,12 @@ to create a project tree directory. This directory will have certain files/direc
 Inside of that is:<br>
 <br>
 * manage.py - "Django Admin" used to run commands for project. Similar to app.js in node or App.js in React<br>
-* project_name directory - holds: <br> 
+* project_name directory stub - holds: <br> 
     * settings.py - settings are stored here<br>
     * urls.py - holds base URLs for our project
     * wsgi.py - controls how project is served at places like Heroku. The entry point from our web server.
 
 ###Running the Server:###
-
 From within the project_name directory, not the root directory, run: 
 ```
 python manage.py migrate
@@ -64,3 +64,17 @@ This will apply all pending migrations from all apps. Migrations, as we know, ar
 python manage.py runserver 0.0.0.0:8000
 ```
 This will run the server.
+
+###How to write a URL:###
+URLs are all written in your urls.py file.
+
+In our urls.py we have to import from what view it is we're using for our route. For example, if we had a views.py file in the same directory as your urls.py we'd write this line:
+```python
+from . import views
+```
+Then we'd add what specific "view"(function) it is that we want to load to the url route we specify using regular expressions. So if we had a `hello_world` function in our views.py we could also add this line in our urls.py:
+```python
+urlpatterns = [
+    url(r'^$', views.hello_world)
+]
+```
