@@ -9,9 +9,9 @@ Virtual Environment will isolate your Python/Django setup on a per-project basis
 
 <h6>How to write a function:</h6>
 
-def functionName(arguments):
-    #always indent 4 spaces in Python
-    #write your function or define variables inside the function declaration
-    return  #return ends the function
+def functionName(arguments):<br>
+    #always indent 4 spaces in Python<br>
+    #write your function or define variables inside the function declaration<br>
+    return  #return ends the function<br>
 
 
