@@ -6,7 +6,7 @@ Python is space sensitive!
 
 Virtual Environment will isolate your Python/Django setup on a per-project basis. This means that any changes you make to one website won't affect any others you're also developing.
 
-#####How to write a function:#####
+###How to write a function:###
 ```python
 def functionName(arguments):
     #always indent 4 spaces in Python
@@ -14,12 +14,23 @@ def functionName(arguments):
     return  #return ends the function
 ```
 
+###Importing packages:###
+Example:
+```python
+from django.http import HttpResponse
+ #from package.subpackage import module 
+
+def hello_world(request):
+  return HttpResponse('Hello World')
+```
+
+
 #Django#
 Django is a MTV(Model-Template-View) framework. MTV is similar to what we've seen with MVC in Ruby on Rails except for some small differences. For instance, Views in Django are the bridge between Models(Database) and Templates(What You See), similar to what we called Controllers in Ruby on Rails.
 
 Routes in Django are written using regular expressions
 
-#####How to start a project in Django:#####
+###How to start a project in Django:###
 First you need Django installed. You can do that by running
 ```
 pip install django
@@ -43,7 +54,7 @@ Inside of that is:<br>
     * urls.py - holds base URLs for our project
     * wsgi.py - controls how project is served at places like Heroku. The entry point from our web server.
 
-#####Running the Server:#####
+###Running the Server:###
 
 From within the project_name directory, not the root directory, run: 
 ```
