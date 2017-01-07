@@ -17,7 +17,7 @@ Saving a Python file:
 Execute Python from Sublime:
     python3 filename.py
 
-An indent is 4 spaces.
+An indent is 4 spaces. We need to do this so Python knows what code to run if the result is true.
 
 making a commeny in Python:
     #
