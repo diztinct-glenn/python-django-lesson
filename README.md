@@ -66,7 +66,7 @@ from . import views
 Then we'd add what specific "view"(function) it is that we want to load to the url route we specify using regular expressions. So if we had a `hello_world` function in our views.py we could also add this line in our urls.py:
 ```python
 urlpatterns = [
-    url(r'^$', views.hello_world)
+    url(r'^$', views.hello_world) #first: route written in regular expression(this example is a blank string, aka the root), second: the view you're rendering on that route
 ]
 ```
 
@@ -78,7 +78,16 @@ To create an app in Django run this command in your terminal:
 
 After we run that command, go into your projects settings.py file and find the part that has the array `INSTALLED_APPS`. After all of the django apps already included in the array, make sure to add whatever you `app_name` was you used in the command `python manage.py startapp app_name`.
 
+###How to Create a Model for your App:###
+Just like in Ruby on Rails, in Django, Models are singular.
 
+In the models.py file of our newly created app we'll include this code:
+```python
+class WhateverIsTheSingularOfYourApp(models.Model): #Our class here will inherit from the base class models.Model because we're making it a Model. (models.Model) is the base class that our models are going to extend.
+    created\_at = models.DateTimeField(auto\_now\_add=True) #To add columns to our table we add attributes to our class
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+```
 
 
 
