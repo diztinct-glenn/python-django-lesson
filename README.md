@@ -207,7 +207,7 @@ Just like in Ruby on Rails, in Django, Models are singular.
 In the models.py file of our newly created app we'll include this code:
 ```python
 class WhateverIsTheSingularOfYourApp(models.Model): #Our class here will inherit from the base class models.Model because we're making it a Model. (models.Model) is the base class that our models are going to extend.
-    created\_at = models.DateTimeField(auto\_now\_add=True) #To add columns to our table we add attributes to our class
+    created_at = models.DateTimeField(auto_now_add=True) #To add columns to our table we add attributes to our class
     title = models.CharField(max_length=255)
     description = models.TextField()
 ```
