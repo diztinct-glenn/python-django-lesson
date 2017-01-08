@@ -56,32 +56,32 @@ Comparisons:
     >, <, ==, !=, >=, <=, and(both have to be true), or(only one has to be true)
 
 If Statement:
-    Example:
-    ```python
-    if 3 > 2:
-        print('It works!')
-    ```
+Example:
+```python
+if 3 > 2:
+    print('It works!')
+```
 
 If Else Statement:
-    Example:
-    ```python
-    if 5 > 2:
-        print('5 is indeed greater than 2')
-    else:
-        print('5 is not greater than 2')
-    ```
+Example:
+```python
+if 5 > 2:
+    print('5 is indeed greater than 2')
+else:
+    print('5 is not greater than 2')
+```
 
 Elif(Else If) Statement:
-    Example:
-    ```python
-    name = 'Sonja'
-    if name == 'Ola':
-        print('Hey Ola!')
-    elif name == 'Sonja':
-        print('Hey Sonja!')
-    else:
-        print('Hey anonymous!')
-    ```
+Example:
+```python
+name = 'Sonja'
+if name == 'Ola':
+    print('Hey Ola!')
+elif name == 'Sonja':
+    print('Hey Sonja!')
+else:
+    print('Hey anonymous!')
+```
 
 For loops:
 ```python
@@ -98,10 +98,10 @@ For loops:
 
 Range is a function that creates a list of numbers in order:
     Example:
-    ```python
-    for i in range(1, 6):
-        print(i) = 1, 2, 3, 4, 5
-    ```
+```python
+for i in range(1, 6):
+    print(i) = 1, 2, 3, 4, 5
+```
 <hr/>
 
 Virtual Environment will isolate your Python/Django setup on a per-project basis. This means that any changes you make to one website won't affect any others you're also developing.
