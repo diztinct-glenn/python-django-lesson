@@ -192,6 +192,7 @@ class WhateverIsTheSingularOfYourApp(models.Model): #Our class here will inherit
 ```
 
 ###Adding Instances to Our Model:###
+*We'll learn another way to do this further along the tutorial, but for now this will do the trick.*
 Run `python manage.py shell` in order to open a Python shell with Django's configuration already loaded.
 
 Within the shell you can run these commands:<br>
@@ -346,6 +347,51 @@ Let's add some of this our templates now so we can actually apply some CSS. In o
 <!-- This will go in our <head> tag -->
 <link rel="stylesheet" href="{% static 'css/layout.css' %}"> <!-- Here we're just telling the href to use the rules we set above for static files and get the layout.css file out of the css folder in assets -->
 ```
+
+###Editing our Admin Pages:###
+Let's say we have created an app called _courses_. In that app we have our __models.py__ file and in that file this code:
+```python
+from django.db import models
+
+class Course(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    
+    def __str__(self):
+        return self.title
+
+class Step(models.Model):
+  title = models.CharField(max_length=255)
+  description = models.TextField()
+  order = models.IntegerField(default=0)
+  course = models.ForeignKey(Course) # this links the Step model to the Course model
+  
+  def __str__(self):
+      return self.title
+```
+
+This would make 2 models for us (Course and Step), Course being a course and Step being the steps to that course.<br>
+
+Then in our __admin.py__ of our courses app we'll add these lines:
+```python
+from django.contrib import admin
+
+from .models import Course, Step # we've got to remember to import all our models we're working with
+
+ # These following 2 classes will allow us to add forms within our specific models admin page.
+class StepInline(admin.StackedInline): # StackedInline - inline where fields takes up the full width of the form. TabularInline - inline where fields are part of a single row for the form.
+    model = Step
+  
+class CourseAdmin(admin.ModelAdmin):
+    inlines = [StepInline,] #inlines can be thought of as smaller forms within larger forms. The smaller form represents a related record in the database.
+
+admin.site.register(Course, CourseAdmin) # adding CourseAdmin after Course here allows us to use the data from the Step model and render the form.
+admin.site.register(Step)
+```
+
+
+
 
 
 
