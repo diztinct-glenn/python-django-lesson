@@ -187,10 +187,10 @@ class WhateverIsTheSingularOfYourApp(models.Model): #Our class here will inherit
     description = models.TextField()
 ```
 
-###Adding Instances to Our Model###
+###Adding Instances to Our Model:###
 Run `python manage.py shell` in order to open a Python shell with Django's configuration already loaded.
 
-Within the shell you can run these commands:
+Within the shell you can run these commands:<br>
 To save an in-memory instance of a model to the database: `Model.save()`
 
 To save an in-memory instance of a model to the database and return the newly-created object: `Model.create()`
@@ -198,6 +198,45 @@ To save an in-memory instance of a model to the database and return the newly-cr
 Run this command to import the model's data to the shell: `from selected_app.models import Model`
 
 Then we can run something like `Model.objects.all()` to list all the things in that specific Model using ORM.
+
+###Creating an App View Using ORM:###
+Here's an example of how to set up a basic view listing all the columns in our model for a specific app.
+
+In the _views.py_ file make sure to include this line in order to use data from the model to populate the page:
+```python
+from .models import Model # importing from .models means to import from the models.py file in the current app's directory
+```
+
+Then, still in the _views.py_ file, you could make a function like this example to return a string with all the column names from your Model:
+```python
+def data_list(request):
+  data = Model.objects.all()
+  output = ', '.join([str(data) for model in models])
+  return HttpResponse(output)
+```
+
+Create a _urls.py_ file within the current Apps folder. Within that file include:
+```python
+from django.conf.urls import url # this allows us to assign urls in our created app
+from . import views # this imports the views from the current app directory
+
+urlpatterns = [
+    url(r'^$', views.data_list), # this assigns the data_list function within the views.py folder to render the page at the specified route
+]
+```
+
+Now we've taken care of the url within our specific App's directory, but we're going to need to add some things to the _urls.py_ within our Master App folder.
+```python
+from django.conf.urls import include # this allows us to use the include function for our url declaration
+```
+`include()` allows you to include a list of URLs from another module(app). You can pass the method the variable name or a path to the default urlpatterns variable.
+
+We'll also need to add a url path to the `urlpatterns` list for our newly created url in the specific App's folder. Here's an example:
+```python
+url(r'^data/', include('data.urls'))
+```
+  
+  
 
 
 
