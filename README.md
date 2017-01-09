@@ -240,7 +240,63 @@ We'll also need to add a url path to the `urlpatterns` list for our newly create
 url(r'^data/', include('data.urls'))
 ```
 
-###  
+###Django Admin:###
+Django comes built in with a very powerful tool, the Admin. By going to our site's url_/admin_ we're brought to a log in screen that the Django developers were nice enough to give to us. How neat is that?
 
+In order to create a user that is able to login to the Admin area with all permissions we'd run: `python manage.py createsuperuser`
+
+Within our specific App's folder there's an _admin.py_ file. This is where we are going to register our Models to the Admin page. 
+
+First, we have to import our models. We can do that like so:
+```python
+from .models import Model
+```
+
+Then we're going to register that Model to the Admin with this line of code:
+```python
+admin.site.register(Model) #allows us to edit instances of that model in the admin instead of running shell commands
+```
+
+After we save our changes we'll be able to go to our Admin page and log in as a superuser. We should instantly see the Model that we imported/registered to the Admin. From there you'll be able to create new Instances right from the admin page, and not the shell. Score!
+
+###How to Template in Django:###
+Convention for saving your templates files is to structure them like so: __app_name/templates/app_name__ because Django looks in app directories for a directory named templates automatically
+
+In our _views.py_ file for __app_name__ we'll have to make sure to include render like so:
+`from django.shortcuts import render`
+
+Then let's change our original function to render the way we want so we can template the page the way we want to:
+```python
+def models_list(request):
+  models = Model.objects.all()
+  return render(request, 'models/model_list.html', {'models': models})
+  # The render function takes three arguments:
+  # 1. the request we pass into the actual function
+  # 2. the path to the template file (automatically looks at the templates folder within the specific app first so we don't need to include that in the file path)
+  # 3. (optional) a context dictionary
+```
+
+Then we'll template the __model_list.html__ like so:
+```python
+{% for model in models %} # this opens the for loop of our Course model using {% %}
+<h2>{{ model.title }}</h2> # this add the data from the title column in the Course model using {{}}
+{{ model.description }} # this add the data from the description column in the Course model using {{}}
+
+{% endfor %} # this closes the for loop {% %}
+```
+
+Everything we've done above is all fine and dandy for templating our pages for apps that we've created, but what if we want to template our root page? Well let's take a look shall we?
+
+First, in the __root folder__(project folder) we'll need to create a templates folder and inside that folder we can create our template file. We could name it something like __home.html__.
+Then, we can write whatever HTML we want in our __home.html__ file.
+If we go into our __settings.py__ file now we'll see there's a list called _TEMPLATES_. We need to make sure to add something into the __DIRS__ part to let our python app know where to look in order to template our root page. We'll go ahead and add _'templates'_ as an argument.
+Finally, we can change our root __views.py__ to this:
+```python
+from django.shortcuts import render
+
+def home_page(request):
+  return render(request, 'home.html')
+```
+As you can see it's pretty similar to how we template our custom app pages, except for the fact that we need to go into our __settings.py__ and add something.
 
 
