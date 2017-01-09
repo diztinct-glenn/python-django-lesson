@@ -4,8 +4,44 @@ A beginner's lesson on the Python language and Django framework.
 ![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
 
 #Python#
-
 Python Docs: https://docs.python.org/3/
+
+##_The Zen of Python:_##
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+
+##What is Python used for?##
+* Web Development - Create Web apps with frameworks like Django
+* Data Analysis - Use libraries like Matplotlib and Seaborn for data visualization
+* Machine Learning - Many libraries exist that allow you to predict stocks or customer satisfaction, such as Scikit-Learn, NLTK and TensorFlow
+* Computer Vision - You can even use Python for facial recognition!
+* Web Scraping - If a site doesn't have an API, no worries! Just use Python to grab data from the site.
+* Writing Scripts - Easily automate repetitve things in your life
+
+
+##Why use Python?##
+* It's extremely readable.(Just like Ruby!). The rules for writing Python are so strict that a novice's Python code will look the same as Guido van Rossum's code. He's the creator of Python by the way.<br>
+* There's a bunch of libraries that nice people have made and shared over at https://pypi.python.org(Just like npm and Ruby gems!).
+* Python is multipurpose. It's a very powerful language that isn't specialized for a single purpose.
+
+<hr/>
 
 Python is space sensitive! An indent is 4 spaces. We need to do this so Python knows what code to run if the result is true.
 
@@ -38,15 +74,24 @@ Error for trying to print a key that is not in the dictionary: KeyError
 
 Error that tells you two types can't be compared: TypeError
 <hr/>
-Lists are objects that are a list of other objects:
-    []  ex: lottery=[54, 2,45, 9, 7, 24]
+Lists are what we've called arrays in other languages such as JavaScript:
+    Example -
+```python
+lottery=[54, 2,45, 9, 7, 24]
+```
 
 Dictionary is what you call objects stores as a key valued pair:
-    {} ex: participant = {'name': 'Jennifer', 'country': 'USA', 'favorite_numbers': [1, 5, 18, 87]}
-    print (participant[‘name’])
+    Example -
+```python
+participant = {'name': 'Jennifer', 'country': 'USA', 'favorite_numbers': [1, 5, 18, 87]}
+print (participant[‘name’])
+```
 
 How to add a new key value pair to the dictionary:
-    ex: participant['favorite_language'] = 'Python'
+    Example -
+```python
+participant['favorite_language'] = 'Python'
+```
 
 To rearrange from lowest to highest value: `.sort()`
 
@@ -130,9 +175,11 @@ def hello_world(request):
 #Django#
 Django Docs: https://docs.djangoproject.com/en/1.10/
 
+*From Django's wikipedia* - Django's primary goal is to ease the creation of complex, database-driven websites. Django emphasizes reusability and "pluggability" of components, rapid development, and the principle of don't repeat yourself.<br>
+
 Django is a MTV(Model-Template-View) framework. MTV is similar to what we've seen with MVC in Ruby on Rails except for some small differences. For instance, Views in Django are the bridge between Models(Database) and Templates(What You See), similar to what we called Controllers in Ruby on Rails.
 
-Routes in Django are written using regular expressions
+Routes in Django are written dynamically using regular expressions.
 
 ###How to start a project in Django:###
 First you need Django installed. You can do that by running
@@ -408,7 +455,7 @@ We can't forget to add the url route for the page in our _models_ app! Place thi
 url(r'(?P<pk>\d+)/$', views.model_detail), #this path is saying to look at the Parent's <pk>(which is the id) and it should have one or more digits in it. It's parent is /models so thats why we don't need to include /models before the <pk>
 ```
 Now let's make our template. How about naming the document __model_detail.html__ and saving it in the specific apps templates>models folder. Here's an example of something we could render out that would display the model's title and description and then all the steps to that model with the step's titles and descriptions:
-```python
+```html
 {% extends "layout.html" %}
 
 {% block title %}{{model.title}}{% endblock %}
@@ -427,6 +474,7 @@ Now let's make our template. How about naming the document __model_detail.html__
 </article>
 {% endblock %}
 ```
+
 
 
 
