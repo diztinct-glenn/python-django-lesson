@@ -390,6 +390,43 @@ admin.site.register(Course, CourseAdmin) # adding CourseAdmin after Course here 
 admin.site.register(Step)
 ```
 
+###Adding Individual Pages Based on Data's Id(Key):###
+So we already have something like this in our _models_ app:
+```python
+def models(request):
+    models = Model.objects.all()
+    return render(request, 'models/model_list.html', {'models': models})
+```
+Let's add this function to render a specific model from Model:
+```python
+def model_detail(request, pk): #pk stands for 'primary key' which is the id
+    model = Model.objects.get(pk=pk) # .get() lets you get a single instance from a model
+    return render(request, 'models/model_detail.html', {'model': model})
+```
+We can't forget to add the url route for the page in our _models_ app! Place this in our urlpatterns list:
+```python
+url(r'(?P<pk>\d+)/$', views.model_detail), #this path is saying to look at the Parent's <pk>(which is the id) and it should have one or more digits in it. It's parent is /models so thats why we don't need to include /models before the <pk>
+```
+Now let's make our template. How about naming the document __model_detail.html__ and saving it in the specific apps templates>models folder. Here's an example of something we could render out that would display the model's title and description and then all the steps to that model with the step's titles and descriptions:
+```python
+{% extends "layout.html" %}
+
+{% block title %}{{model.title}}{% endblock %}
+
+{% block content %}
+<article>
+  <h2>{{ model.title }}</h2>
+  {{ model.description }}
+  
+  <section>
+    {% for step in model.step_set.all %} #step is a query set so can use step_set.all to get everything out of that query set
+     <h3>{{ step.title }}</h3>
+     {{ step.description }}
+    {% endfor %}
+  </section>
+</article>
+{% endblock %}
+```
 
 
 
