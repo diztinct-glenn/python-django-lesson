@@ -287,9 +287,9 @@ Then we'll template the __model_list.html__ like so:
 
 Everything we've done above is all fine and dandy for templating our pages for apps that we've created, but what if we want to template our root page? Well let's take a look shall we?
 
-First, in the __root folder__(project folder) we'll need to create a templates folder and inside that folder we can create our template file. We could name it something like __home.html__.
-Then, we can write whatever HTML we want in our __home.html__ file.
-If we go into our __settings.py__ file now we'll see there's a list called _TEMPLATES_. We need to make sure to add something into the __DIRS__ part to let our python app know where to look in order to template our root page. We'll go ahead and add _'templates'_ as an argument.
+First, in the __root folder__(project folder) we'll need to create a templates folder and inside that folder we can create our template file. We could name it something like __home.html__.<br>
+Then, we can write whatever HTML we want in our __home.html__ file.<br>
+If we go into our __settings.py__ file now we'll see there's a list called _TEMPLATES_. We need to make sure to add something into the __DIRS__ part to let our python app know where to look in order to template our root page. We'll go ahead and add _'templates'_ as an argument.<br>
 Finally, we can change our root __views.py__ to this:
 ```python
 from django.shortcuts import render
@@ -298,5 +298,22 @@ def home_page(request):
   return render(request, 'home.html')
 ```
 As you can see it's pretty similar to how we template our custom app pages, except for the fact that we need to go into our __settings.py__ and add something.
+
+
+###Template Inheritance:###
+There's a really cool part of templating in Django. They can inherit from other templates! Let's look at an example.<br>
+First, in our root folder's templates folder let's add a __layout.html__ file.<br>
+```html
+<!doctype html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+</html>
+```
+
 
 
