@@ -302,7 +302,8 @@ As you can see it's pretty similar to how we template our custom app pages, exce
 
 ###Template Inheritance:###
 There's a really cool part of templating in Django. They can inherit from other templates! Let's look at an example.<br>
-First, in our root folder's templates folder let's add a __layout.html__ file.<br>
+
+First, in our root folder's templates folder let's add a __layout.html__ file. This file does the same thing our layout.erb file from Rails does.<br>
 ```html
 <!doctype html>
 <html>
@@ -313,6 +314,37 @@ First, in our root folder's templates folder let's add a __layout.html__ file.<b
     {% block content %}{% endblock %}
   </body>
 </html>
+```
+
+The _block_ tags allow us to override a parent element. We'll get back to what is going on in this file after adding something to our __home.html__ file:
+```html
+{% extends "layout.html" %} <!-- This line is the equivalent to a yield tag in Rails. It's taking everything from the layout.html file and "extending" it into our homte.html file -->
+
+{% block title %}Howdy!{% endblock %} <!-- The above line of code allows us to write out our title tag(What shows up in the tab of the browser) using these python/django specific tags. -->
+
+{% block content %}<h1>Welcome!</h1>{% endblock %} <!-- This lines up with the block content tags in our layout.html and will render a h1 tag saying "Welcome!" in the body tag.-->
+```
+###How to Include Static Files:###
+At the bottom of our __settings.py__ file we need to add this code:
+```python
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'), 
+)
+```
+What this does is set the base directory for where our static files will be, which is the __assets__ folder in the root folder.<br>
+
+Now in our root __urls.py__ file we'll add some more things:
+```python
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns # this will collect static file's urls from each of our applications
+    # then after our urlpatterns list,
+urlpatterns += staticfiles_urlpatterns()
+```
+
+Let's add some of this our templates now so we can actually apply some CSS. In our __layout.html__ file let's go ahead and add these things:
+```html
+{% load static from staticfiles %} <!-- this is allowing us to use static files in this template -->
+<!-- This will go in our <head> tag -->
+<link rel="stylesheet" href="{% static 'css/layout.css' %}"> <!-- Here we're just telling the href to use the rules we set above for static files and get the layout.css file out of the css folder in assets -->
 ```
 
 
