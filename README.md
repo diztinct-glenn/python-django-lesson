@@ -3,7 +3,9 @@ A beginner's lesson on the Python language and Django framework.
 
 ![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
 
-Python Docs: https://docs.python.org/3/tutorial/datastructures.html
+#Python#
+
+Python Docs: https://docs.python.org/3/
 
 Python is space sensitive! An indent is 4 spaces. We need to do this so Python knows what code to run if the result is true.
 
@@ -28,14 +30,14 @@ Finding the length:
 Convert something to a string: `str()`
 
 Convert something to an integer: `int()`
-
+<hr/>
 ####Error Messages####
 Error for a variable that has not been defined: NameError
 
 Error for trying to print a key that is not in the dictionary: KeyError
 
 Error that tells you two types can't be compared: TypeError
-
+<hr/>
 Lists are objects that are a list of other objects:
     []  ex: lottery=[54, 2,45, 9, 7, 24]
 
@@ -54,7 +56,7 @@ Deleting something from your list: `.pop()`
 
 Comparisons:
     >, <, ==, !=, >=, <=, and(both have to be true), or(only one has to be true)
-
+<hr/>
 If Statement:
 Example - 
 ```python
@@ -82,7 +84,7 @@ elif name == 'Sonja':
 else:
     print('Hey anonymous!')
 ```
-
+<hr/>
 For loops:
 ```python
     for ___ in ___:
@@ -95,7 +97,7 @@ For loops:
         hi(name)
         print('Next girl')
 ```
-
+<hr/>
 Range is a function that creates a list of numbers in order:
     Example -
 ```python
@@ -126,6 +128,8 @@ def hello_world(request):
 ```
 
 #Django#
+Django Docs: https://docs.djangoproject.com/en/1.10/
+
 Django is a MTV(Model-Template-View) framework. MTV is similar to what we've seen with MVC in Ruby on Rails except for some small differences. For instance, Views in Django are the bridge between Models(Database) and Templates(What You See), similar to what we called Controllers in Ruby on Rails.
 
 Routes in Django are written using regular expressions
@@ -229,14 +233,14 @@ Now we've taken care of the url within our specific App's directory, but we're g
 ```python
 from django.conf.urls import include # this allows us to use the include function for our url declaration
 ```
-`include()` allows you to include a list of URLs from another module(app). You can pass the method the variable name or a path to the default urlpatterns variable.
+`include()` allows you to include a list of URLs from another module(app). You can pass the function the variable name or a path to the default urlpatterns variable.
 
 We'll also need to add a url path to the `urlpatterns` list for our newly created url in the specific App's folder. Here's an example:
 ```python
 url(r'^data/', include('data.urls'))
 ```
-  
-  
+
+###  
 
 
 
