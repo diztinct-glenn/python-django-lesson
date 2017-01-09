@@ -1,7 +1,7 @@
-![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
-
 # python-django-lesson
 A beginner's lesson on the Python language and Django framework.
+
+![alt text](https://samueleresca.net/wp-content/uploads/2015/12/python-django-logo.jpg "Python & Django")
 
 Python Docs: https://docs.python.org/3/tutorial/datastructures.html
 
@@ -56,14 +56,14 @@ Comparisons:
     >, <, ==, !=, >=, <=, and(both have to be true), or(only one has to be true)
 
 If Statement:
-Example:
+Example - 
 ```python
 if 3 > 2:
     print('It works!')
 ```
 
 If Else Statement:
-Example:
+Example - 
 ```python
 if 5 > 2:
     print('5 is indeed greater than 2')
@@ -72,7 +72,7 @@ else:
 ```
 
 Elif(Else If) Statement:
-Example:
+Example - 
 ```python
 name = 'Sonja'
 if name == 'Ola':
@@ -97,7 +97,7 @@ For loops:
 ```
 
 Range is a function that creates a list of numbers in order:
-    Example:
+    Example -
 ```python
 for i in range(1, 6):
     print(i) = 1, 2, 3, 4, 5
@@ -186,6 +186,18 @@ class WhateverIsTheSingularOfYourApp(models.Model): #Our class here will inherit
     title = models.CharField(max_length=255)
     description = models.TextField()
 ```
+
+###Adding Instances to Our Model###
+Run `python manage.py shell` in order to open a Python shell with Django's configuration already loaded.
+
+Within the shell you can run these commands:
+To save an in-memory instance of a model to the database: `Model.save()`
+
+To save an in-memory instance of a model to the database and return the newly-created object: `Model.create()`
+
+Run this command to import the model's data to the shell: `from selected_app.models import Model`
+
+Then we can run something like `Model.objects.all()` to list all the things in that specific Model using ORM.
 
 
 
